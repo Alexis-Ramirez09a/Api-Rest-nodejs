@@ -1,4 +1,4 @@
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const Usuario = require('../models/usuario.model');
 
@@ -28,7 +28,7 @@ exports.registrar = async (req, res) => {
             return res.status(400).json({ mensaje: 'El correo ya está registrado' });
         }
         const hash = await bcrypt.hash(password, 10);
-        const nuevoUsuario = await Usuario.create({ nombre, email, password: hashedPassword });
+        const nuevoUsuario = await Usuario.create({ nombre, email, password: hash });
         res.status(201).json({ mensaje: 'Usuario registrado exitosamente', usuario: nuevoUsuario });
     } catch (error) {
         res.status(500).json({ mensaje: 'Error al registrar usuario', error: error.message });

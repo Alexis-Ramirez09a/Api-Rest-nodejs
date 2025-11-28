@@ -75,16 +75,36 @@ Api-Rest-nodejs/
 │   ├── config/
 │   │   └── database.js  # Configuración de la base de datos
 │   ├── controllers/
+│   │   ├── auth.controller.js
+│   │   ├── categoria.controller.js
 │   │   └── producto.controller.js
 │   ├── models/
-│   │   └── producto.model.js
+│   │   ├── categoria.model.js
+│   │   ├── producto.model.js
+│   │   └── usuario.model.js
 │   └── routes/
+│       ├── auth.routes.js
+│       ├── categoria.routes.js
 │       └── producto.routes.js
 ├── .env                 # Variables de entorno
 ├── .gitignore
 ├── package.json
 └── README.md
 ```
+
+## Endpoints
+
+### Autenticación
+- `POST /api/auth/register`: Registrar un nuevo usuario
+- `POST /api/auth/login`: Iniciar sesión
+
+### Productos
+- `GET /api/productos/listar`: Listar todos los productos
+- `POST /api/productos/crear`: Crear un nuevo producto (Requiere token)
+
+### Categorías
+- `GET /api/categorias/listar`: Listar todas las categorías
+- `POST /api/categorias/crear`: Crear una nueva categoría (Requiere token)
 
 ## Scripts Disponibles
 
