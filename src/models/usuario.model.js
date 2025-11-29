@@ -1,5 +1,6 @@
 const { DataTypes } = require('sequelize');
 const sequelize = require('../config/database');
+
 const Usuario = sequelize.define('Usuario', {
     id: {
         type: DataTypes.INTEGER,
@@ -25,8 +26,15 @@ const Usuario = sequelize.define('Usuario', {
     refreshToken: {
         type: DataTypes.STRING,
         allowNull: true
+    },
+    rol: {
+        type: DataTypes.STRING,
+        defaultValue: 'user',
+        allowNull: false
     }
 }, {
     tableName: 'usuarios',
     timestamps: true
 });
+
+module.exports = Usuario;
